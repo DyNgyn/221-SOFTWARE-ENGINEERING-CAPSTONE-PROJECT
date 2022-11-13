@@ -4,15 +4,9 @@
     height: 69px;
     left: 704px;
     top: 151px;
-    
-    font-family: 'Arial';
-    font-style: normal;
     font-weight: 700;
     font-size: 60px;
     line-height: 69px;
-}
-.copyright {
-    bottom: 0px;
 }
 .imgs{
     position: absolute;
