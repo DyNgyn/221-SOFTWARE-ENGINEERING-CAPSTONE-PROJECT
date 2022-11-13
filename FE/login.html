@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block head %}
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/login.css" />
+<title>Bahnar Dictionary</title>
+{% endblock %} {% block body %}
+<div class="topnav">
+  <img class="hcmut1-img" src="img/hcmut.png" alt="" />
+  <div class="other-project">
+    <a href="web1.html"> Web 1</a>
+  </div>
+  <div class="other-project">
+    <a href="web2.html"> Web 2</a>
+  </div>
+  <div class="other-project">
+    <a href="web3.html"> Web 3</a>
+  </div>
+  <div class="other-project">
+    <a href="web4.html"> Web 4</a>
+  </div>
+  <button class="sign-in">Sign In</button>
+  <a class="register" href="register.html">Register</a>
+</div>
+<form method="POST" action="" class="login-form" id="login">
+  <p class="form-title">SIGN IN</p>
+  <div class="form-group-1">
+    <label for="username" class="label-text"> Username</label><br />
+    <input type="text" name="username" id="username" placeholder="username" />
+  </div>
+  <div class="form-group-2">
+    <label for="password" class="label-text"> Password</label> <br />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="anhyeuem123"
+    />
+  </div>
+  <div class="tick">
+    <input
+      type="checkbox"
+      name="remember-me"
+      id="remember-me"
+      class="agree-term"
+    />
+    <label for="remember-me" class="label-agree-term">
+      <span><span></span></span>Remember me ?
+    </label>
+  </div>
+  <div class="form-button">
+    <input type="submit" name="submit" value="Sign In" id="submit" />
+  </div>
+</form>
+<img class="translator-img" src="img/translator.jpg" alt="" />
+<center>
+  <img class="hcmut2-img" src="img/hcmut.png" alt="" />
+</center>
+<p class="copyright">&#169; 2022 HCMUT</p>
+{% endblock %}
