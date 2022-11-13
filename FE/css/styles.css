@@ -27,9 +27,13 @@ button:hover {
   width: 81px;
   height: 29px;
   font-style: normal;
-  padding-top: 48px;
+  padding-top: 45px;
   padding-left: 300px;
   padding-right: 0px;
+
+}
+.link{
+  font-size:20px;
   text-decoration: none;
   color: white;
 }
