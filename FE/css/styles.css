@@ -115,14 +115,14 @@ input {
   width: 147px;
   height: 136px;
   left: 887px;
-  top: 760px;
+  bottom: 50px;
 }
 .copyright {
   position: absolute;
   width: 143px;
   height: 23px;
   left: 887px;
-  top: 900px;
+  bottom: 0px;
 
   font-family: "Arial";
   font-style: normal;
