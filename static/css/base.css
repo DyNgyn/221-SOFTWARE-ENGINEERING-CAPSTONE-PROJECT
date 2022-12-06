@@ -1,0 +1,71 @@
+button:hover {
+  opacity: 0.7;
+}
+.topnav {
+  width: 100%;
+  height: 114px;
+  background: #1f1d1d;
+  display: flex;  
+}
+.topnav img {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 78px;
+  height: 75px;
+}
+.sign-in {
+  color: white;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top:30px;
+  margin-left:150px;
+  width: 120px;
+  height: 50px;
+}
+.register {
+  margin-top: 38px;
+  margin-left: 10px;
+  font-size: 20px;
+  width: 94px;
+  height: 30px;
+  color: #58a1d6;
+}
+.other-project {
+  width: 80px;
+  height: 30px;
+  font-style: normal;
+  margin-top: 40px;
+  margin-left: 200px;
+  margin-right: 0px;
+}
+.link{
+  font-size:20px;
+  text-decoration: none;
+  color: white;
+}
+
+
+.copyright{
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+}
+.copyright p{
+  width: 143px;
+  height: 23px;
+
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+
+  color: #b8b8bb;
+}
+
+.copyright img{
+  width: 5%;
+  height: 5%;
+  
+}

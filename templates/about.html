@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/about.css') }}"
+/>
+<title>Bahnar Dictionary</title>
+{% endblock %} {% block body %}
+<center>
+  <p class="page-title">About Us</p>
+</center>
+<div>
+  <img
+    class="imgs"
+    src="{{ url_for('static', filename='img/Homepage 1.png')}}"
+    alt=""
+  />
+</div>
+<div>
+  <p class="section-title" id="leader">Leaders</p>
+  <p class="leader-description">Description</p>
+</div>
+
+<div>
+  <div class="portrait" id="p1">
+    <img class="leader-img" id="pimg1" src="img/Member 1.png" alt="" />
+    <a class="name" id="name1">Fullname</a>
+    <a class="major-title" id="mt1">Professional Title</a>
+    <a class="l-description" id="ldes1">Leader Description</a>
+    <a class="email" id="e1">Email</a>
+  </div>
+  <div class="portrait" id="p2">
+    <img class="leader-img" id="pimg2" src="img/Member 2.png" alt="" />
+    <a class="name" id="name2">Fullname</a>
+    <a class="major-title" id="mt2">Professional Title</a>
+    <a class="l-description" id="ldes2">Leader Description</a>
+    <a class="email" id="e2">Email</a>
+  </div>
+  <div class="portrait" id="p3">
+    <img class="leader-img" id="pimg3" src="img/Member 3.png" alt="" />
+    <a class="name" id="name3">Fullname</a>
+    <a class="major-title" id="mt3">Professional Title</a>
+    <a class="l-description" id="ldes3">Leader Description</a>
+    <a class="email" id="e3">Email</a>
+  </div>
+  <div class="portrait" id="p4">
+    <img class="leader-img" id="pimg4" src="img/Member 4.png" alt="" />
+    <a class="name" id="name4">Fullname</a>
+    <a class="major-title" id="mt4">Professional Title</a>
+    <a class="l-description" id="ldes4">Leader Description</a>
+    <a class="email" id="e4">Email</a>
+  </div>
+  <div class="portrait" id="p5">
+    <img class="leader-img" id="pimg5" src="img/Member 5.png" alt="" />
+    <a class="name" id="name5">Fullname</a>
+    <a class="major-title" id="mt5">Professional Title</a>
+    <a class="l-description" id="ldes5">Leader Description</a>
+    <a class="email" id="e5">Email</a>
+  </div>
+  <div class="portrait" id="p6">
+    <img class="leader-img" id="pimg6" src="img/Member 6.png" alt="" />
+    <a class="name" id="name6">Fullname</a>
+    <a class="major-title" id="mt6">Professional Title</a>
+    <a class="l-description" id="ldes6">Leader Description</a>
+    <a class="email" id="e6">Email</a>
+  </div>
+  <div class="portrait" id="p7">
+    <img class="leader-img" id="pimg7" src="img/Member 7.png" alt="" />
+    <a class="name" id="name7">Fullname</a>
+    <a class="major-title" id="mt7">Professional Title</a>
+    <a class="l-description" id="ldes7">Leader Description</a>
+    <a class="email" id="e7">Email</a>
+  </div>
+  <div class="portrait" id="p8">
+    <img class="leader-img" id="pimg8" src="img/Member 8.png" alt="" />
+    <a class="name" id="name8">Fullname</a>
+    <a class="major-title" id="mt8">Professional Title</a>
+    <a class="l-description" id="ldes8">Leader Description</a>
+    <a class="email" id="e8">Email</a>
+  </div>
+</div>
+
+<div>
+  <p class="section-title" id="other">Other Contributors</p>
+  <p class="leader-description">Description</p>
+</div>
+
+{% endblock %}
