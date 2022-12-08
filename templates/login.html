@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/register.css') }}"
+/>
+<title>LOGIN</title>
+{% endblock %} {% block body %}
+
+<div class="hold">
+  <div class="form-container">
+    <h1>SIGN IN</h1>
+    <form method="POST" action="/login" class="form-register" id="login">
+      <div class="form-group">
+        <label for="username" class="label-text"> Username</label><br />
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="username"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password" class="label-text"> Password</label> <br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter at least 8 characters"
+        />
+      </div>
+      <div class="form-button">
+        <input type="submit" name="submit" value="LOGIN" id="submit" />
+      </div>
+    </form>
+
+
+  </div>
+  <img
+    class="translator-img"
+    src="{{
+  url_for('static',filename='img/translator.jpg') }}"
+    alt=""
+  />
+</div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+  <p>{{ message }}</li>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% endblock %}

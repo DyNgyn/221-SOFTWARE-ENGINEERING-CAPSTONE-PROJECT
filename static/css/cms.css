@@ -1,0 +1,126 @@
+
+.side-navi {
+  height:1200px;
+  width:18%;
+  background-color: black;
+  padding-top: 20px;
+  display:flex;
+  flex-direction: column;
+  float:left;
+}
+.side-navi a{
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: gray;
+}
+.show a{
+  margin-left:20px;
+  font-size: 20px;
+}
+.side-navi a:hover{
+  color:white;
+}
+.side-navi img{
+  margin-top:20px;
+  width: 78px;
+  height: 75px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content{
+  margin-left:60px;
+  float:left;
+}
+h1{
+  margin-top:50px;
+  font-family: Poppins;
+  font-size: 40px; 
+  line-height: 48px; 
+  font-weight: bold;
+  color: #29C3E5FF; 
+}
+h2{
+  margin-bottom: 40px;
+  padding-left:10px;
+}
+.holder{
+  margin-top: 50px;
+  margin-left: 400px;
+  padding-top:50px;
+  padding-bottom:50px;
+  display:flex;
+  justify-content: center;
+  width: 732px; 
+  background: #FFFFFFFF; /* white */
+  border-radius: 4px; /* border-m */
+  border-width: 1px; 
+  border-color: #F3F4F6FF; /* neutral-200 */
+  border-style: solid;
+}
+.form-container h1{
+  font-size: 32px; 
+  line-height: 48px; 
+  margin-right:60px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.label-text{
+  font-weight:bold;
+  padding-left: 10px; 
+}
+.form-group {
+  margin-bottom:30px;
+}
+input{
+  border-radius: 5px;
+  width: 660px; 
+  height: 40px; 
+  padding-left: 10px; 
+  padding-right: 14px;
+  font-size: 14px; 
+  background: #F3F4F6FF; /* neutral-200 */
+  border-radius: 4px; /* border-m */
+  border-width: 0px; 
+  outline: none; 
+}
+#description{
+  height: 147px;
+  text-align: left;
+  white-space: pre-wrap;
+}
+#submit {
+  background-color: #498DF2;
+  border-radius:6px;
+  margin-top:50px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  border:none;
+  width: 180px;
+  height: 60px;
+  float: right;
+}
+
+.copyrights{
+  margin-top:50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+}
+.copyrights img{
+  width: 5%;
+  height: 5%;
+}
+.copyrights p{
+  width: 143px;
+  height: 23px;
+
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+
+  color: #b8b8bb;
+}
