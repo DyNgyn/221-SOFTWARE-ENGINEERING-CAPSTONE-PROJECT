@@ -32,7 +32,8 @@
         <input type="submit" name="submit" value="LOGIN" id="submit" />
       </div>
     </form>
-    <p>{{message}}</p>
+
+
   </div>
   <img
     class="translator-img"
@@ -41,4 +42,11 @@
     alt=""
   />
 </div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+  <p>{{ message }}</li>
+{% endfor %}
+{% endif %}
+{% endwith %}
 {% endblock %}
