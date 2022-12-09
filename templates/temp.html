@@ -67,12 +67,13 @@ href="{{ url_for('static', filename='css/base.css') }}"
       </div>
       <div class="form-group">
         <label for="description" class="label-text"> Web Description</label> <br />
-        <input
+        <textarea
           type="text"
+          rows = 5
+          cols = 87
           name="description"
           id="description"
-          value="{{info.Description}}"
-        />
+        >{{info.Description}}</textarea>
       </div>
       <div>
         <label for="image" class="label-text" > Replace Image</label> <br />

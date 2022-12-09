@@ -50,8 +50,14 @@
       <div class="form-button">
         <input type="submit" name="submit" value="Register" id="submit" />
       </div>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</li>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
     </form>
-    <p>{{message}}</p>
   </div>
   <img
     class="translator-img"
