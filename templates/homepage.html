@@ -19,12 +19,11 @@
 </div>
 <div class="holder">
   {%for item in info%}
-  {% if loop.index is divisibleby (2) %}
+  {% if loop.index is not divisibleby (2) %}
   <div class="subholder">
     <img
       class="project-img"
-      src="{{ url_for('static', filename='img/Homepage 2.png')}}"
-      alt=""
+      src="{{ url_for('static', filename= 'img/upload/')}}{{item['Img']}}"
     />
     <div>
       <h1>{{item.Header}}</h1>
@@ -45,7 +44,7 @@
     </div>
     <img
       class="project-img"
-      src="{{ url_for('static', filename='img/Homepage 2.png')}}"
+      src="{{ url_for('static', filename= 'img/upload/')}}{{item['Img']}}"
       alt=""
     />
   </div>
