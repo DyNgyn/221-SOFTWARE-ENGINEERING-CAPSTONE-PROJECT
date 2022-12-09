@@ -23,3 +23,23 @@ $ export FLASK_APP= app.py
 $ flask run
 
 ```
+
+For Windows (Command Prompt)
+# Running the app
+
+```
+# Set the virtual envronment
+
+$ virtualenv env
+$ .\env\Scripts\activate.bat
+
+# Installing the packets
+
+$ pip install -r requirements.txt
+
+# Setup and run flask
+
+$ set FLASK_APP= app.py
+$ flask run
+
+```
