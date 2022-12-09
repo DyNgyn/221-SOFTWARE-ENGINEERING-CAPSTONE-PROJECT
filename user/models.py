@@ -7,34 +7,39 @@ class User:
         del user['h_password']
         session['logged_in'] = True
         session['user'] = user
-        return jsonify(user), 200
+        return user, 200
 
     def signup(self):
+
         username = request.form.get('username')
         email = request.form.get('email')
-        password1 = request.form.get('password')
-        password2 = request.form.get('confirm_password')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
         
+        if not (username and email and password1 and password2):
+            return "Please fill in the form", 400
         user = {
             "username"  : username,
             "email" : email,
             "h_password" : password1,
         }
 
-        user['h_password'] = hashlib.sha256(password1.encode('utf-8')).hexdigest()
         
         if db["Webmaster"].find_one({ "email": user['email'] }):
-            return jsonify({ "error": "Email address already in use" }), 400
+            return "Email address already in use", 400
 
         if db["Webmaster"].find_one({ "username": user['username'] }):
-            return jsonify({ "error": "Username address already in use" }), 400
+            return "Username address already in use", 400
         
-        ## Add password verification
+        if (len(password1)<8):
+            return "Password is too short", 400
         
-        if db["Webmaster"].insert_one(user):
-            return self.start_session(user)
+        if (password1 != password2):
+            return "Password didn't match", 400
         
-        return jsonify({ "error": "Signup failed" }),400
+        user['h_password'] = hashlib.sha256(password1.encode('utf-8')).hexdigest()
+        db["Webmaster"].insert_one(user)
+        return "Signup Successfully",200
     
     def signout(self):
         session.clear()
@@ -43,9 +48,10 @@ class User:
     def login(self):
         username = request.form.get('username')
         password = request.form.get('password')
-        user = db["Webmaster"].find_one({"username": username},{"_id":0,"username":1, "h_password":1})
+        h_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+        user = db["Webmaster"].find_one({"username": username, "h_password":h_password},{"_id":0,"username":1, "h_password":1})
 
-        if user and hashlib.sha256(password.encode('utf-8')).hexdigest() == user["h_password"]:
+        if user:
             return self.start_session(user)
         
-        return jsonify({ "error": "Invalid login credentials" }), 401
+        return "Invalid login credentials", 401

@@ -1,12 +1,16 @@
-from flask import Flask, render_template, request,redirect
+from flask import Flask, render_template, request,redirect, flash
 from app import app
 from .models import User
-@app.route('/signup',methods=['GET','POST'])
+
+@app.route('/register',methods=['GET','POST'])
 def register_page():
     if request.method == 'POST':
-        status = User().signup()
-        print(status[1])
-        return render_template("cms.html")
+        msg,status = User().signup()
+        if (status != 200):
+            print(status)
+            flash(msg)
+        else:
+            return redirect("/login")
     return render_template("register.html")
 
 @app.route('/signout')
@@ -16,9 +20,9 @@ def logout_page():
 @app.route('/login', methods=['GET','POST'])
 def login_page():
     if request.method == 'POST':
-        status =  User().login()
-        print(status[1])
-        return redirect('/')
-       
-    
+        msg,status = User().login()
+        if (status != 200):
+            flash(msg)
+        else:
+            return redirect("/cms")
     return render_template("login.html")
