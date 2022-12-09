@@ -7,6 +7,7 @@ class User:
         del user['h_password']
         session['logged_in'] = True
         session['user'] = user
+        session.permanent = True
         return user, 200
 
     def signup(self):

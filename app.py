@@ -2,12 +2,13 @@ from flask import Flask, render_template, request, session,redirect,url_for, jso
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from random import randint
-
+from datetime import timedelta
 import os
 from functools import wraps
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '7a9097f3b37240fe8dbc99bc'
+app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=30)
 client = MongoClient("mongodb+srv://dbadmin:H9kGaW0KH3wV1zpi@cluster0.sfcugwr.mongodb.net/?retryWrites=true&w=majority", server_api=ServerApi('1'))
 db=client["WebDB"]
 webmaster = db["Webmaster"]
