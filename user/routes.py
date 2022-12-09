@@ -9,7 +9,6 @@ def register_page():
         flash(msg)
         if (status != 200):
             flash(msg)
-            print(status)
         else:
             return redirect("/login")
     return render_template("register.html")
