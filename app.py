@@ -57,6 +57,6 @@ def cms_page(pid="1"):
         if (pid!="0"):
             content.update_one({"id":pid},{"$set":{"Header": header, "Link": link, "Description": description,"Img": "1"}})
             message = f"Update Project {header} Succesfully"
-            return render_template("temp.html",info = content.find_one({"id": pid}),message=message)
-    return render_template("temp.html",info = project_document,message=message)
-    
+            return render_template("cms.html",info = content.find_one({"id": pid}),message=message)
+    return render_template("cms.html",info = project_document,message=message)
+
