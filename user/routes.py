@@ -4,8 +4,8 @@ from .models import User
 @app.route('/signup',methods=['GET','POST'])
 def register_page():
     if request.method == 'POST':
-        status = User().signup()
-        print(status[1])
+        msg,status = User().signup()
+        print(msg)
         return render_template("cms.html")
     return render_template("register.html")
 
@@ -16,9 +16,10 @@ def logout_page():
 @app.route('/login', methods=['GET','POST'])
 def login_page():
     if request.method == 'POST':
-        status =  User().login()
-        print(status[1])
-        return redirect('/')
+        msg, status =  User().login()
+        print(status)
+        if (status != 200):
+            return redirect('/')
        
     
     return render_template("login.html")
