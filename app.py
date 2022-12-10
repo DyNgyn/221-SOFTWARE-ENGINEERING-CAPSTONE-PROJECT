@@ -53,13 +53,9 @@ def cms_page(pid="1"):
         image = request.files.get("image",None)
         if image:
             filename = secure_filename(image.filename)
-            print(filename)
             image.save(os.path.join(app.config["UPLOAD_PATH"], filename))
-        else:
-            print("????????????")
-        # if (pid!="0"):
-        #     content.update_one({"id":pid},{"$set":{"Header": header, "Link": link, "Description": description,"Img": "1"}})
-        #     message = f"Update Project {header} Succesfully"
-        #     return render_template("cms.html",info = content.find_one({"id": pid}),message=message)
+        content.update_one({"id":pid},{"$set":{"Header": header, "Link": link, "Description": description,"Img": filename}})
+        message= f"Update Project {header} Succesfully"
+        return render_template("cms.html",info = content.find_one({"id": pid}),message=message)
     return render_template("cms.html",info = project_document,message=message)
 
