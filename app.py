@@ -88,6 +88,7 @@ def cms_page(pid="1"):
 
 
 @app.route('/cms-about', methods = ['GET', 'POST'])
+@login_required
 def cms_about():
     if request.method == "POST":
         summary = request.form["summary"]
