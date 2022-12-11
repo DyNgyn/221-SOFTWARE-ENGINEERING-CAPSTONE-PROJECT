@@ -8,15 +8,13 @@
   flex-direction: column;
   float:left;
 }
-.side-navi a{
+.side-navi h6{
+  margin-top: 20px;
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  color: gray;
-}
-.show a{
-  margin-left:20px;
-  font-size: 20px;
-}
+  color: white;
+  font-size:25px;
+} 
 .side-navi a:hover{
   color:white;
 }
@@ -126,4 +124,13 @@ input{
 }
 textarea{
   background: #F3F4F6FF;
+}
+
+.dropdown-menu a{
+  font-size:17px;
+}
+.profile{
+  margin-top:400px;
+  margin-left:20px;
+  bottom: 0;
 }
