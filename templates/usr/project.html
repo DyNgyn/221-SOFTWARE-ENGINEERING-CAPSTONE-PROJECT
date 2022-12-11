@@ -1,0 +1,33 @@
+{% extends 'usr/base.html' %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/about.css') }}"
+/>
+<title>Bahnar Dictionary</title>
+{% endblock %} {% block body %}
+<center>
+  <p class="page-title">{{info.Header}}</p>
+</center>
+<div>
+  <img
+    class="imgs"
+    src="{{ url_for('static', filename='img/Homepage 1.png')}}"
+    alt=""
+  />
+</div>
+<div class="content">
+  <h2 class="content-header">Summary</h2>
+  <p class="content-body">{{info.Summary}}</p>
+</div>
+<div class="content">
+  <h2 class="content-header">Description</h2>
+  <div >     
+    {%for text in info.Description%}
+    <p class="content-body">{{text}}</p>
+    {%endfor%}</div>
+</div>
+<div class = "content text-center">
+  <a href="{{info.Link}}" type="button" class="btn btn-lg btn-info">Visit Website</a>
+</div>
+
+{% endblock %}
