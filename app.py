@@ -35,7 +35,7 @@ def utility_processor():
 @app.route('/home')
 def home_page():
     all_data = content.find({})
-    return render_template("homepage.html",info = all_data)
+    return render_template("usr/homepage.html",info = all_data)
 
 @app.route('/about')
 def about_page():
@@ -43,7 +43,7 @@ def about_page():
     print(data["Intention"])
     data["Intention"] = data["Intention"].split('\r\n')
     print(data["Intention"])
-    return render_template("about.html", info=data)
+    return render_template("usr/about.html", info=data)
 
 
 @app.route('/cms', methods = ['GET', 'POST'])
@@ -73,13 +73,13 @@ def cms_page(pid="1"):
             project_id = str(number_of_project+1)
             content.insert_one({"id":project_id,"Header": header, "Link": link, "Description": description,"Img": filename})
             message= f"Insert Project {header} Succesfully"
-        return render_template("cms.html",info = content.find_one({"id": project_id}),message=message)
-    return render_template("cms.html",info = project_document,message=message)
+        return render_template("webmaster/cms.html",info = content.find_one({"id": project_id}),message=message)
+    return render_template("webmaster/cms.html",info = project_document,message=message)
 
 @app.route('/project/<pid>', methods = ['GET'])
 def project_page(pid):
     project_content = content.find_one({"id": pid})
-    return render_template("project.html", info= project_content)
+    return render_template("usr/project.html", info= project_content)
 
 @app.route('/cms-about', methods = ['GET', 'POST'])
 def cms_about():
@@ -89,7 +89,7 @@ def cms_about():
         timeline = request.form["timeline"]
         db["About"].update_one({},{"$set":{"Summary": summary, "Intention": intent, "Timeline": timeline}})
         message= f"Update Page Succesfully"
-        return render_template("cms_about.html", info = db["About"].find_one({}))
+        return render_template("webmaster/cms_about.html", info = db["About"].find_one({}))
 
     homepage_data = db["About"].find_one({})
-    return render_template("cms_about.html", info=homepage_data)
+    return render_template("webmaster/cms_about.html", info=homepage_data)

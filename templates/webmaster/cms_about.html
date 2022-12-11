@@ -1,0 +1,50 @@
+{% extends 'webmaster/base.html' %} 
+<title>LANDING PAGE</title>
+{% block head %}
+{%block body%}
+      <h1>Edit About Us</h1>
+    <div class ="holder">
+      <form method="POST" action="/cms-about" class="form-register" id="register">
+      <h2>Content Management for About Us Page</h2>
+      <div class="form-group">
+        <label for="summary" class="label-text"> Summary</label><br />
+        <textarea
+          type="text"
+          rows =5
+          cols =87
+          name="summary"
+          id="summary"
+        >{{info.Summary}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="intent" class="label-text"> Intent</label> <br />
+        <textarea
+          type="text"
+          rows =5
+          cols =87
+          name="intent"
+          id="intent"
+        >{{info.Intention}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="timeline" class="label-text"> Timeline</label> <br />
+        <input
+          type="text"
+          name="timeline"
+          id="timeline"
+          value ="{{info.Timeline}}"
+        /></textarea>
+      </div>
+
+      <div class="form-button">
+        <input type="submit" name="submit" value="Update" id="submit" />
+      </div>
+      <div style="margin-top:150px; text-align:center;"><h5>{{message}}</h5></div></div>
+      
+    </form>
+
+{% endblock %}
+
+
+
+

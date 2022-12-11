@@ -21,7 +21,7 @@
 rel="stylesheet"
 href="{{ url_for('static', filename='css/base.css') }}"
 />
-<title>LANDING PAGE</title>
+{%block head%} {% endblock %}
   </head>
   <body>
     <div class="side-navi">
@@ -53,18 +53,6 @@ href="{{ url_for('static', filename='css/base.css') }}"
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
           </svg>
         </a>
-          <!-- <a href="{{url_for('cms_page',pid='1')}}" class="dropdown-item">
-            Web 1
-          </a>
-          <a href="{{url_for('cms_page',pid='2')}}" class="dropdown-item">
-            Web 2
-          </a>
-          <a href="{{url_for('cms_page',pid='3')}}" class="dropdown-item">
-            Web 3
-          </a>
-          <a href="{{url_for('cms_page',pid='4')}}" class="dropdown-item">
-            Web 4
-          </a> -->
       </div>
     </div>
       <hr>
@@ -83,51 +71,8 @@ href="{{ url_for('static', filename='css/base.css') }}"
       </div>
     </div>
     <div class="content">
-      <h1>Landing Page Content Management</h1>
-    <div class ="holder">
-      <form method="POST" action="/cms/{{info.id}}" class="form-register" id="register" enctype="multipart/form-data">
-      <h2>Content Management for Web {{info.id}}</h2>
-      <div class="form-group">
-        <label for="header" class="label-text"> Web Header</label><br />
-        <input
-          type="text"
-          name="header"
-          id="header"
-          value="{{info.Header}}"
-        />
-      </div>
-      <div class="form-group">
-        <label for="link" class="label-text"> Web Link</label> <br />
-        <input
-          type="text"
-          name="link"
-          id="link"
-          value="{{info.Link}}"
-        />
-      </div>
-      <div class="form-group">
-        <label for="description" class="label-text"> Web Description</label> <br />
-        <textarea
-          type="text"
-          rows = 5
-          cols = 87
-          name="description"
-          id="description"
-        >{{info.Description}}</textarea>
-      </div>
-      <div>
-        <label for="image" class="label-text" > Replace Image</label> <br />
-        <input type="file" style="background: white"
-        id="image" name="image"
-        accept="image/png, image/jpeg">
-      </div>  
-
-      <div class="form-button">
-        <input type="submit" name="submit" value="Update" id="submit" />
-      </div>
-      <div style="margin-top:150px; text-align:center;"><h5>{{message}}</h5></div></div>
-      
-    </form>
+     {%block body%}
+     {%endblock%}
 
     <div class="copyrights">
       <img src="{{ url_for('static', filename='img/hcmut.png')}}" alt="" />

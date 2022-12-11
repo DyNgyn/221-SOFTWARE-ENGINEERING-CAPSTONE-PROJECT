@@ -10,7 +10,7 @@ def register_page():
             flash(msg)
         else:
             return redirect("/login")
-    return render_template("register.html")
+    return render_template("usr/register.html")
 
 @app.route('/signout')
 def logout_page():
@@ -24,5 +24,5 @@ def login_page():
         return redirect('/cms')
        
     
-    return render_template("login.html")
+    return render_template("usr/login.html")
 
