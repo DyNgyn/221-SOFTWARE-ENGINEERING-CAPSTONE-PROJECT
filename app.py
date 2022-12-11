@@ -39,11 +39,12 @@ def home_page():
 
 @app.route('/about')
 def about_page():
-    return render_template("about.html")
+    data = db["About"].find_one({})
+    print(data["Intention"])
+    data["Intention"] = data["Intention"].split('\r\n')
+    print(data["Intention"])
+    return render_template("about.html", info=data)
 
-@app.route('/member')
-def member_page():
-    return render_template("about.html")
 
 @app.route('/cms', methods = ['GET', 'POST'])
 @app.route('/cms/<pid>', methods = ['GET', 'POST'])
@@ -82,5 +83,13 @@ def project_page(pid):
 
 @app.route('/cms-about', methods = ['GET', 'POST'])
 def cms_about():
+    if request.method == "POST":
+        summary = request.form["summary"]
+        intent = request.form["intent"]
+        timeline = request.form["timeline"]
+        db["About"].update_one({},{"$set":{"Summary": summary, "Intention": intent, "Timeline": timeline}})
+        message= f"Update Page Succesfully"
+        return render_template("cms_about.html", info = db["About"].find_one({}))
+
     homepage_data = db["About"].find_one({})
-    return render_template("cms_about.html", info="")
+    return render_template("cms_about.html", info=homepage_data)
