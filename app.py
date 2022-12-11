@@ -5,7 +5,7 @@ from random import randint
 from datetime import timedelta
 import os
 from functools import wraps
-
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '7a9097f3b37240fe8dbc99bc'
@@ -82,11 +82,12 @@ def cms_page(pid="1"):
         link = request.form["link"]
         description = request.form["description"]
         image = request.files.get("image",None)
-        filename = ""
+        filename = project_document["Img"]
         if image:
             filename = secure_filename(image.filename)
             image.save(os.path.join(app.config["UPLOAD_PATH"], filename))
-        
+        else:
+            print("????")
         if (pid != "0"):
             content.update_one({"id":project_id},{"$set":{"Header": header, "Link": link, "Description": description,"Img": filename}})
             message= f"Update Project {header} Succesfully"
