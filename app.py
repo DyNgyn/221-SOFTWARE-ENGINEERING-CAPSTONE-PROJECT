@@ -5,7 +5,7 @@ from random import randint
 from datetime import timedelta
 import os
 from functools import wraps
-from werkzeug.utils import secure_filename
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '7a9097f3b37240fe8dbc99bc'
@@ -35,6 +35,10 @@ def home_page():
     all_data = content.find({})
     return render_template("homepage.html",info = all_data)
 
+@app.route('/about')
+def about_page():
+    return render_template("about.html")
+
 @app.route('/member')
 def member_page():
     return render_template("about.html")
@@ -51,11 +55,16 @@ def cms_page(pid="1"):
         link = request.form["link"]
         description = request.form["description"]
         image = request.files.get("image",None)
+        print(app.root_path)
         if image:
-            filename = secure_filename(image.filename)
-            image.save(os.path.join(app.config["UPLOAD_PATH"], filename))
-        content.update_one({"id":pid},{"$set":{"Header": header, "Link": link, "Description": description,"Img": filename}})
-        message= f"Update Project {header} Succesfully"
-        return render_template("cms.html",info = content.find_one({"id": pid}),message=message)
+            image.save(os.path.join(app.config["UPLOAD_PATH"], image.filename))
+        
+        if (pid!="0"):
+            content.update_one({"id":pid},{"$set":{"Header": header, "Link": link, "Description": description,"Img": "1"}})
+            message = f"Update Project {header} Succesfully"
+            return render_template("cms.html",info = content.find_one({"id": pid}),message=message)
     return render_template("cms.html",info = project_document,message=message)
+
+
+
 

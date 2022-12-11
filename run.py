@@ -7,3 +7,7 @@ content = db["Content"]
 all_data = content.find({})
 for data in all_data:
     print(data)
+
+from app import app
+if __name__ == "__main__":
+    app.run(debug=True)
