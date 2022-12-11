@@ -21,7 +21,7 @@ def login_page():
     if request.method == 'POST':
         status =  User().login()
         print(status[1])
-        return redirect('/')
+        return redirect('/cms')
        
     
     return render_template("login.html")
