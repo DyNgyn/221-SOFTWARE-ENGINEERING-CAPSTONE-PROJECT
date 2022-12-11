@@ -13,6 +13,7 @@ button:hover {
   width: 78px;
   height: 75px;
 }
+
 .sign-in {
   color: white;
   border-radius: 5px;
@@ -20,12 +21,13 @@ button:hover {
   font-size: 20px;
   cursor: pointer;
   margin-top:30px;
-  margin-left:150px;
+  margin-left:250px;
   width: 120px;
   height: 50px;
 }
 .register {
-  margin-top: 38px;
+  float:right;
+  margin-top: 37px;
   margin-left: 10px;
   font-size: 20px;
   width: 94px;
@@ -36,12 +38,12 @@ button:hover {
   width: 80px;
   height: 30px;
   font-style: normal;
-  margin-top: 40px;
-  margin-left: 200px;
+  margin-top: 35px;
+  margin-left: 350px;
   margin-right: 0px;
 }
 .link{
-  font-size:20px;
+  font-size:25px;
   text-decoration: none;
   color: white;
 }

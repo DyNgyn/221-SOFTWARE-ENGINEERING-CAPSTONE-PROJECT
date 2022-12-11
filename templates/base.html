@@ -19,11 +19,29 @@
   </head>
   <body>
     <div class="topnav">
-      <img src="{{url_for('static', filename='img/hcmut.png')}}" alt="" />
+      <a href="{{ url_for('home_page') }}"><img src="{{url_for('static', filename='img/hcmut.png')}}" alt="" /></a>
+      
       <div class="other-project">
         <a class="link" href="{{ url_for('home_page') }}">Home</a>
       </div>
+
+      <div class ="other-project dropdown">
+        <a class="link" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Project 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {%for i in range (1,number+1)%}
+          {% set temp = i|string%}
+          <a href="{{url_for('project_page',pid=temp)}}" class="dropdown-item">
+            Project {{temp}}
+          </a>
+          {%endfor%}
+      </div>
+      </div>
       <div class="other-project">
+        <a class="link" href="{{ url_for('about_page') }}">About</a>
+      </div>
+      <!-- <div class="other-project">
         <a class="link" href="web1.html"> Web 1</a>
       </div>
       <div class="other-project">
@@ -34,9 +52,10 @@
       </div>
       <div class="other-project">
         <a class="link" href="web4.html"> Web 4</a>
-      </div>
-      <a type="button" href="{{ url_for('login_page') }}" class="btn btn-lg btn-info sign-in">Sign In</button>
-      <a class="register" href="{{ url_for('register_page') }}">Register</a>
+      </div> -->
+
+        <a type="button" href="{{ url_for('login_page') }}" class="btn btn-lg btn-info sign-in">Sign In</button>
+        <a class="register" href="{{ url_for('register_page') }}">Register</a>
     </div>
 
     {% block body %}{% endblock %}
