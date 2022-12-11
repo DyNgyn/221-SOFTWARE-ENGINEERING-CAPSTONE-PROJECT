@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, session,redirect,url_for, jsonify, flash
+from flask import Flask, render_template, request, session,redirect
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
-from random import randint
 from datetime import timedelta
 import os
 from functools import wraps
@@ -13,7 +12,6 @@ app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=30)
 app.config["UPLOAD_PATH"] = app.root_path + "/static/img/upload/"
 client = MongoClient("mongodb+srv://dbadmin:H9kGaW0KH3wV1zpi@cluster0.sfcugwr.mongodb.net/?retryWrites=true&w=majority", server_api=ServerApi('1'))
 db=client["WebDB"]
-webmaster = db["Webmaster"]
 content = db["Content"]
 
 
@@ -81,3 +79,8 @@ def cms_page(pid="1"):
 def project_page(pid):
     project_content = content.find_one({"id": pid})
     return render_template("project.html", info= project_content)
+
+@app.route('/cms-about', methods = ['GET', 'POST'])
+def cms_about():
+    homepage_data = db["About"].find_one({})
+    return render_template("cms_about.html", info="")
