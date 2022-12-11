@@ -28,7 +28,7 @@
     <div>
       <h1>{{item.Header}}</h1>
       <h2>{{item.Summary}}</h2>
-      <a target="_blank" href="{{item.Link}}" type="button" class="btn btn-lg btn-info"
+      <a target="_blank" href="{{url_for('project_page', pid=item.id)}}" type="button" class="btn btn-lg btn-info"
         >Visit</a
       >
     </div>
@@ -38,9 +38,8 @@
     <div>
       <h1>{{item.Header}}</h1>
       <h2>{{item.Summary}}</h2>
-      <a target="_blank" href="{{item.Link}}" type="button" class="btn btn-lg btn-info"
-        >Visit</a
-      >
+      <a target="_blank" href="{{url_for('project_page', pid=item.id)}} type="button" class="btn btn-lg btn-info"
+        >Visit</a >
     </div>
     <img
       class="project-img"
@@ -51,59 +50,6 @@
   {% endif %}
   {% endfor %}
 </div>
-<!--
-<div class="holder">
-  
-  <div class="subholder">
-    <div>
-      <h1>Web 1</h1>
-      <h2>Brief description of Web 1</h2>
-      <a type="button" class="btn btn-lg btn-info">Visit Web 1</a>
-    </div>
-    <img
-      class="project-img"
-      src="{{ url_for('static', filename='img/Homepage 2.png')}}"
-      alt=""
-    />
-  </div>
-  <div class="subholder">
-    <img
-      class="project-img"
-      src="{{ url_for('static', filename='img/Homepage 3.png')}}"
-      alt=""
-    />
-    <div>
-      <h1>Web 2</h1>
-      <h2>Brief description of Web 2</h2>
-      <a type="button" class="btn btn-lg btn-info">Visit Web 2</a>
-    </div>
-  </div>
-  <div class="subholder">
-    <div>
-      <h1>Web 3</h1>
-      <h2>Brief description of Web 3</h2>
-      <a type="button" class="btn btn-lg btn-info">Visit Web 3</a>
-    </div>
-    <img
-      class="project-img"
-      src="{{ url_for('static', filename='img/Homepage 4.png')}}"
-      alt=""
-    />
-  </div>
-  <div class="subholder">
-    <img
-      class="project-img"
-      src="{{ url_for('static', filename='img/Homepage 4.png')}}"
-      alt=""
-    />
-    <div>
-      <h1>Web 4</h1>
-      <h2>Brief description of Web 4</h2>
-      <a type="button" class="btn btn-lg btn-info">Visit Web 4</a>
-    </div>
-  </div>
-</div>
--->
 <div class="participant">
   <div style="margin-top: 50px; margin-left: 160px">
     <h1>More about us</h1>
@@ -112,6 +58,6 @@
   </div>
   <img src="{{ url_for('static', filename='img/Homepage 5.png')}}" alt="" />
 </div>
-<!-- miss hcmut logo and copyright-->
+
 
 {% endblock %}

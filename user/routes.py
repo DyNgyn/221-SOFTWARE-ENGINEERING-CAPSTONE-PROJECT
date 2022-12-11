@@ -19,10 +19,11 @@ def logout_page():
 @app.route('/login', methods=['GET','POST'])
 def login_page():
     if request.method == 'POST':
-        status =  User().login()
-        print(status[1])
-        return redirect('/cms')
+        msg, status =  User().login()
+        if (status != 200):
+            flash(msg)
+        else:
+            return redirect('/cms')
        
-    
     return render_template("usr/login.html")
 
