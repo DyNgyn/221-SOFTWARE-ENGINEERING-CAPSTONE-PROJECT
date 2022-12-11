@@ -30,7 +30,7 @@ class User:
             return "Email address already in use", 400
 
         if db["Webmaster"].find_one({ "username": user['username'] }):
-            return "Username address already in use", 400
+            return "Username already in use", 400
         
         if (len(password1)<8):
             return "Password is too short", 400
