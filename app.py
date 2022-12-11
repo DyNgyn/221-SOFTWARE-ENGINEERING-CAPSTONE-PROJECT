@@ -93,3 +93,7 @@ def cms_page(pid="1"):
         return render_template("cms.html",info = content.find_one({"id": project_id}),message=message,number = number_of_project)
     return render_template("cms.html",info = project_document,message=message,number = number_of_project)
 
+@app.route('/project/<pid>', methods = ['GET'])
+def project_page(pid):
+    project_content = content.find_one({"id": pid})
+    return render_template("project.html", info= project_content)
