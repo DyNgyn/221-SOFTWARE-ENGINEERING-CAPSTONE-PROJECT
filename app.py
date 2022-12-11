@@ -5,7 +5,7 @@ from random import randint
 from datetime import timedelta
 import os
 from functools import wraps
-from werkzeug.utils import secure_filename
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '7a9097f3b37240fe8dbc99bc'
@@ -34,6 +34,10 @@ def login_required(f):
 def home_page():
     all_data = content.find({})
     return render_template("homepage.html",info = all_data)
+
+@app.route('/about')
+def about_page():
+    return render_template("about.html")
 
 @app.route('/member')
 def member_page():
