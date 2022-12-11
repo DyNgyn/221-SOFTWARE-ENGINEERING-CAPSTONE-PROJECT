@@ -45,6 +45,11 @@ def about_page():
     print(data["Intention"])
     return render_template("usr/about.html", info=data)
 
+@app.route('/project/<pid>', methods = ['GET'])
+def project_page(pid):
+    project_content = content.find_one({"id": pid})
+    project_content["Description"] = project_content["Description"].split('\r\n')
+    return render_template("usr/project.html", info= project_content)
 
 @app.route('/cms', methods = ['GET', 'POST'])
 @app.route('/cms/<pid>', methods = ['GET', 'POST'])
@@ -52,7 +57,7 @@ def about_page():
 def cms_page(pid="1"):
     message =""
     project_id = str(pid)
-    project_document = {"id":project_id,"Header": "", "Link": "", "Description":"","Img":""}
+    project_document = {"id":project_id,"Header": "", "Link": "", "Description":"","Summary":"","Img":""}
     if (project_id !="0"):
         project_document = content.find_one({"id": project_id})
     number_of_project =content.count_documents({})
@@ -60,6 +65,7 @@ def cms_page(pid="1"):
     if request.method == "POST":
         header = request.form["header"]
         link = request.form["link"]
+        summary = request.form["summary"]
         description = request.form["description"]
         image = request.files.get("image",None)
         filename = project_document["Img"]
@@ -67,19 +73,16 @@ def cms_page(pid="1"):
             filename = secure_filename(image.filename)
             image.save(os.path.join(app.config["UPLOAD_PATH"], filename))
         if (pid != "0"):
-            content.update_one({"id":project_id},{"$set":{"Header": header, "Link": link, "Description": description,"Img": filename}})
+            content.update_one({"id":project_id},{"$set":{"Header": header, "Link": link, "Description": description,"Summary": summary, "Img": filename}})
             message= f"Update Project {header} Succesfully"
         else:
             project_id = str(number_of_project+1)
-            content.insert_one({"id":project_id,"Header": header, "Link": link, "Description": description,"Img": filename})
+            content.insert_one({"id":project_id,"Header": header, "Link": link, "Description": description,"Summary": summary,"Img": filename})
             message= f"Insert Project {header} Succesfully"
         return render_template("webmaster/cms.html",info = content.find_one({"id": project_id}),message=message)
     return render_template("webmaster/cms.html",info = project_document,message=message)
 
-@app.route('/project/<pid>', methods = ['GET'])
-def project_page(pid):
-    project_content = content.find_one({"id": pid})
-    return render_template("usr/project.html", info= project_content)
+
 
 @app.route('/cms-about', methods = ['GET', 'POST'])
 def cms_about():
