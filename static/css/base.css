@@ -13,7 +13,9 @@ button:hover {
   width: 78px;
   height: 75px;
 }
-
+.dropdown-menu a{
+  font-size:20px;
+}
 .sign-in {
   color: white;
   border-radius: 5px;
@@ -69,5 +71,4 @@ button:hover {
 .copyright img{
   width: 5%;
   height: 5%;
-  
 }
