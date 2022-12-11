@@ -40,6 +40,26 @@ def member_page():
     return render_template("about.html")
 
 @login_required
+@app.route('/cms/add', methods = ['GET', 'POST'])
+def cms_page_add():
+    message =""
+    if request.method == "POST":
+        new_pid = str(content.count_documents({})+1)
+        header = request.form["header"]
+        link = request.form["link"]
+        description = request.form["description"]
+        image = request.files.get("image",None)
+        filename =""
+        if image:
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(app.config["UPLOAD_PATH"], filename))
+        content.insert_one({"id":new_pid,"Header": header, "Link": link, "Description": description,"Img": filename})
+        message= f"Insert Project {header} Succesfully"
+        return render_template("cms.html",info = content.find_one({"id": new_pid}),message=message)
+    project_document = {"id":"add","Header": "", "Link": "", "Description":"","Img":""}
+    return render_template("cms.html",info = project_document,message=message)
+
+@login_required
 @app.route('/cms', methods = ['GET', 'POST'])
 @app.route('/cms/<pid>', methods = ['GET', 'POST'])
 def cms_page(pid="1"):
