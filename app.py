@@ -39,9 +39,10 @@ def home_page():
 def member_page():
     return render_template("about.html")
 
-@login_required
+
 @app.route('/cms', methods = ['GET', 'POST'])
 @app.route('/cms/<pid>', methods = ['GET', 'POST'])
+@login_required
 def cms_page(pid="1"):
     message =""
     project_id=str(pid)
