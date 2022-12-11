@@ -50,11 +50,27 @@
         id="image" name="image"
         accept="image/png, image/jpeg">
       </div>  
+      <div>
+        <div class="form-button">
+          <input type="submit" name="submit" value="Update" id="submit" />
+        </div>
+        {%if info.id|int > 4 %}
+        <div class="form-button">
+          <input type="submit" name="delete" value="Delete" id="submit" />
+        </div>
+        {%endif%}
 
-      <div class="form-button">
-        <input type="submit" name="submit" value="Update" id="submit" />
       </div>
-      <div style="margin-top:150px; text-align:center;"><h5>{{message}}</h5></div></div>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {%for message in messages %}
+      <div style="margin-top:100px; text-align:center;">
+        <h5>{{message}}</h5>
+      </div>
+      {%endfor%}
+      {% endif %}
+      {% endwith %}
+    </div>
       
     </form>
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session,redirect
+from flask import Flask, render_template, request, session,redirect, flash
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from datetime import timedelta
@@ -55,7 +55,6 @@ def project_page(pid):
 @app.route('/cms/<pid>', methods = ['GET', 'POST'])
 @login_required
 def cms_page(pid="1"):
-    message =""
     project_id = str(pid)
     project_document = {"id":project_id,"Header": "", "Link": "", "Description":"","Summary":"","Img":""}
     if (project_id !="0"):
@@ -67,20 +66,24 @@ def cms_page(pid="1"):
         link = request.form["link"]
         summary = request.form["summary"]
         description = request.form["description"]
-        image = request.files.get("image",None)
-        filename = project_document["Img"]
-        if image:
-            filename = secure_filename(image.filename)
-            image.save(os.path.join(app.config["UPLOAD_PATH"], filename))
-        if (pid != "0"):
-            content.update_one({"id":project_id},{"$set":{"Header": header, "Link": link, "Description": description,"Summary": summary, "Img": filename}})
-            message= f"Update Project {header} Succesfully"
+        action = request.form.get("submit",None)
+        if not action:
+            return delete_web()
         else:
-            project_id = str(number_of_project+1)
-            content.insert_one({"id":project_id,"Header": header, "Link": link, "Description": description,"Summary": summary,"Img": filename})
-            message= f"Insert Project {header} Succesfully"
-        return render_template("webmaster/cms.html",info = content.find_one({"id": project_id}),message=message)
-    return render_template("webmaster/cms.html",info = project_document,message=message)
+            image = request.files.get("image",None)
+            filename = project_document["Img"]
+            if image:
+                filename = secure_filename(image.filename)
+                image.save(os.path.join(app.config["UPLOAD_PATH"], filename))
+            if (pid != "0"):
+                content.update_one({"id":project_id},{"$set":{"Header": header, "Link": link, "Description": description,"Summary": summary, "Img": filename}})
+                flash(f"Update Project {header} Succesfully")
+            else:
+                project_id = str(number_of_project+1)
+                content.insert_one({"id":project_id,"Header": header, "Link": link, "Description": description,"Summary": summary,"Img": filename})
+                flash(f"Insert Project {header} Succesfully")
+            return render_template("webmaster/cms.html",info = content.find_one({"id": project_id}))
+    return render_template("webmaster/cms.html",info = project_document)
 
 
 
@@ -91,8 +94,15 @@ def cms_about():
         intent = request.form["intent"]
         timeline = request.form["timeline"]
         db["About"].update_one({},{"$set":{"Summary": summary, "Intention": intent, "Timeline": timeline}})
-        message= f"Update Page Succesfully"
+        flash("Update Page Succesfully")
         return render_template("webmaster/cms_about.html", info = db["About"].find_one({}))
 
     homepage_data = db["About"].find_one({})
     return render_template("webmaster/cms_about.html", info=homepage_data)
+
+def delete_web():
+    num = content.count_documents({})
+    if (num > 4):
+        latest_web_id = str(num)
+        content.delete_one({"id":latest_web_id})
+    return redirect('/cms')
