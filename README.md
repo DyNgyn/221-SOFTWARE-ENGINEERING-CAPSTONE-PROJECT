@@ -2,18 +2,17 @@
 
 # Prequisite 
 
-Please make sure that Python/Pip is insall on your local machine.
-The example below is for Ubuntu/ Ubuntu WSL.
+Please make sure that Python/Pip is install on your local machine before runing the commands.
 
-# Running the app
+# Running the app on Linux
 
 ```
-# Set the virtual envronment
+# Set up the virtual envronment
 
 $ virtualenv env
 $ source env/bin/activate
 
-# Installing the packets
+# Installing the packages required
 
 $ pip install -r requirements.txt
 
@@ -24,8 +23,7 @@ $ flask run
 
 ```
 
-For Windows (Command Prompt)
-# Running the app
+# Running the app on Windows
 
 ```
 # Set the virtual envronment
